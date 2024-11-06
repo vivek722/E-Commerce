@@ -1,0 +1,27 @@
+
+<header>    
+    <div class="header-container">
+        <div class="logo  imglogo">
+          <a href="#"><img [src]="'logo2.jpg'" alt="E-Shop" height="100" width="100" ></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a [routerLink]="['/test/home']" routerLinkActive="router-link-active" >Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="#"><i class="fa fa-shopping-cart"></i><span class="cart-count">3</span></a>
+            <a  [routerLink]="['/Login']" ><i class="fa fa-user"></i>Login</a>
+            <a  [routerLink]="['/UserRegister']" ><i class="fa fa-user"></i>Register</a>
+        </div>
+    </div>
+</header>
+
