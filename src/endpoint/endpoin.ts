@@ -12,4 +12,6 @@ export const endpoints = {
   Supplier: environment.E_Commerce_Url + '/Supplier',
   Inventory: environment.E_Commerce_Url + '/Inventory',
   User: environment.E_Commerce_Url + '/User',
+  WishList: environment.E_Commerce_Url + '/Wishlist',
+  AddToCart: environment.E_Commerce_Url + '/AddToCart',
 };
