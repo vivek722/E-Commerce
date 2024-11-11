@@ -9,17 +9,11 @@ import { UserRegisterComponent } from './authentication/user-register/user-regis
 import { UserHomeDesignComponent } from './viewer-side/user-home-design/user-home-design.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'',pathMatch:'full'},
-  {path:'',loadChildren: () => import('./viewer-side/viewer-side.module').then(m => m.ViewerSideModule)},
+  {path:'',redirectTo:'UserHomePage',pathMatch:'full'},
+  {path:'UserHomePage',loadChildren: () => import('./viewer-side/viewer-side.module').then(m => m.ViewerSideModule)},
   {path:'Login',component:UserLoginComponent},
   {path:'UserRegister',component:UserRegisterComponent},
-  {path:'Home',component:UserHomeComponent},
-  {path:'test',component:SupplierSideBarComponent,
-    children:[
-      {path:'Inventory',component:AddInventoryComponent},
-      {path:'Product',component:AddProductComponent},
-    ]
-  },
+  {path:'Supplier',loadChildren: () => import('./supplier-side/supplier-side.module').then(m => m.SupplierSideModule)},
 ];
 
 @NgModule({

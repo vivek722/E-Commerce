@@ -16,22 +16,22 @@ AddInventory(Iventory:Inventory): Observable<Inventory>
   return this.http.post<Inventory>(`${this.Iventory_Url}/AddInventory`,Iventory)
 }
 
-GetAllProducts():Observable<Inventory>
+GetAllInventorys():Observable<Inventory>
 {
   return this.http.get<Inventory>(`${this.Iventory_Url}/GetAllInventory`);
 }
 
-GetByIdProduct(id:number):Observable<Inventory>
+GetByIdInventory(id:number):Observable<Inventory>
 {
   return this.http.get<Inventory>(`${this.Iventory_Url}/AddProduct ${id}`);
 }
 
-DeleteProduct(id:number):Observable<Inventory>
+DeleteInventory(id:number):Observable<Inventory>
 {
   return this.http.delete<Inventory>(`${this.Iventory_Url}/DeleteInventory ${id}`);
 }
 
-UpdateProduct(Product:Inventory):Observable<Inventory>
+UpdateInventory(Product:Inventory):Observable<Inventory>
 {
   return this.http.put<Inventory>(`${this.Iventory_Url}/UpdateInventory`,Product);
 }

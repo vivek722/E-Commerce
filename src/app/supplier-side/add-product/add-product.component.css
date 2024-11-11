@@ -140,6 +140,14 @@
 {
   margin-left: 600px;
 }
+.Dialog-Title{
+  display: flex;
+  justify-content: center;
+}
+.button-container{
+  display: flex;
+  gap: 10px;
+}
 
   /* Responsive Adjustments */
   @media (max-width: 768px) {

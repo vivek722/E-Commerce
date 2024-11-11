@@ -10,9 +10,11 @@ import { AuthenticationService } from '../AuthenticationService/authentication.s
 })
 export class UserLoginComponent {
 
+
   constructor(private authservice: AuthenticationService,
     private formbuilder: FormBuilder,
     private route: Router,
+
   ) {}
 
   DataSource: FormGroup | null = null;
@@ -30,9 +32,17 @@ export class UserLoginComponent {
       this.authservice.login(LoginData).subscribe((res: any) => {
       if(res != null)
       {
-       // this.Toster.success("Login SuccessFully")
-        this.route.navigate(['/Home']);
+       var RoleName = this.authservice.getUserRoleId()
+      if(RoleName == "Customer")
+      {
+        this.route.navigate(['/UserHomePage']);
       }
+      else if(RoleName == "Supplier")
+      {
+        this.route.navigate(['/SupplierDeshboard']);
+      }
+    }
+
       });
     }
   }

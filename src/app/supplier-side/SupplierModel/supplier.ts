@@ -1,10 +1,13 @@
 export interface Supplier {
+    UserName:string;
     CompanyName:string;
+    Password:string;
+    RoleId:number;
     Phone:String;
-    Email:number;
-    Street:number;
+    Email:String;
+    Street:String;
     City:String;
-    State:number;
-    ZipCode:number;
+    State:String;
+    ZipCode:String;
   }
   

@@ -7,7 +7,10 @@ import { ProductService } from 'src/app/supplier-side/SupplierService/product.se
   templateUrl: './user-home.component.html',
   styleUrls: ['./user-home.component.css']
 })
-export class UserHomeComponent  {
+export class  UserHomeComponent  implements OnInit  {
+  ngOnInit(): void {
+    
+  }
 
 
 

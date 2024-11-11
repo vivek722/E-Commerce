@@ -2,11 +2,11 @@
 <header>    
     <div class="header-container">
         <div class="logo  imglogo">
-          <a href="#"><img [src]="'logo2.jpg'" alt="E-Shop" height="100" width="100" ></a>
+          <a href="#"><img src="/assets/logo2.jpg" alt="E-Shop" height="100" width="100" ></a>
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Search for products...">
-            <button type="submit"><i class="fas fa-search"></i></button>
+            <button type="submit"><i class="bi bi-search"></i></button>
         </div>
         <nav class="nav-links">
             <ul>
@@ -17,10 +17,19 @@
             </ul>
         </nav>
         <div class="header-icons">
-            <a href="#"><i class="fas fa-user"></i></a>
-            <a href="#"><i class="fa fa-shopping-cart"></i><span class="cart-count">3</span></a>
-            <a  [routerLink]="['/Login']" ><i class="fa fa-user"></i>Login</a>
-            <a  [routerLink]="['/UserRegister']" ><i class="fa fa-user"></i>Register</a>
+            <a  href="#"><i class="bi bi-cart"></i><span class="cart-count">3</span></a>
+            
+            <div class="dropdown">
+                <a class="dropdown-button">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </a>
+                <div class="dropdown-content">
+                  <a [routerLink]="['/AddSupplier']"><i class="bi bi-plus"></i>Add As supplier</a>
+                  <a  [routerLink]="['/Login']" ><i class="bi bi-person"></i>Login</a>
+                  <a  [routerLink]="['/UserRegister']" ><i class="bi bi-person"></i>Register</a>
+                </div>
+              </div>
+            
         </div>
     </div>
 </header>

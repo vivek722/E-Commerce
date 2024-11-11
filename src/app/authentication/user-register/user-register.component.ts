@@ -30,7 +30,7 @@ export class UserRegisterComponent {
         UserName: ['', Validators.required],
         Email: ['', [Validators.required, Validators.email]],
         PasswordHash: ['', Validators.required],
-        RoleId: [1],
+        RoleId: [4],
         Street: [''],
         City: [''],
         State: [''],
@@ -39,21 +39,12 @@ export class UserRegisterComponent {
     }
   
     RegisterUser() {
-      if (this.DataSource.invalid) {
-        alert("Please fill out all required fields.");
-        return;
-      }
-  
-      this.authService.Register(this.DataSource.value).subscribe({
-        next: response => {
-          console.log('Registration successful', response);
-          alert("Registration successful!");
-          this.router.navigate(['/login']); // Redirect after successful registration
-        },
-        error: error => {
-          console.error('Registration failed', error);
-          alert("Registration failed. Please try again.");
+      var registerData = this.DataSource.getRawValue();
+      this.authService.Register(registerData).subscribe((res: any) => {
+        if(res != null) {
+          console.log("successfully");
+          
         }
-      });
-    }
+    });
+  }
 }

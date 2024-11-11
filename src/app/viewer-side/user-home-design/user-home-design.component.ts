@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/supplier-side/SupplierService/product.service';
 
 @Component({
@@ -7,19 +7,13 @@ import { ProductService } from 'src/app/supplier-side/SupplierService/product.se
   styleUrls: ['./user-home-design.component.css']
 })
 export class UserHomeDesignComponent implements OnInit {
-  products: any;
-  constructor(private productService: ProductService){}
+  Title : string | undefined;
+  TreandingTitle="Trending Products"
+  Filter : string | undefined;
+  FilterData:any[]=[];
+  constructor(){}
   ngOnInit(): void {
     
-    this.productService.GetAllProducts().subscribe((res: any) => {
-      this.products = res;
-      if(this.products)
-      {
-        console.log("this is list of all products");
-        
-      }
-      console.log(this.products);;
-      
-    });
-  }
+  
+}
 }

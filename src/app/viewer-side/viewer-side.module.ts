@@ -10,6 +10,8 @@ import { UserAddToCartComponent } from './user-add-to-cart/user-add-to-cart.comp
 import { UserHomeDesignComponent } from './user-home-design/user-home-design.component'; 
 import { RouterModule } from '@angular/router';
 import { ViewerSideRoutingModule } from './viewer-side-routing.module';
+import { SupplierRegistrationComponent } from './supplier-registration/supplier-registration.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ViewerSideRoutingModule } from './viewer-side-routing.module';
     UserWishlistComponent,
     UserProductDetailComponent,
     UserAddToCartComponent,
-    UserHomeDesignComponent
+    UserHomeDesignComponent,
+    SupplierRegistrationComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,

@@ -9,30 +9,34 @@ import { WishList } from '../ViewSideModel/WishList';
 })
 export class WishListService {
 
-  Supplier_Url =endpoints.WishList
+
+  WishList_Url =endpoints.WishList
   constructor(private http:HttpClient) { }
 
-  GetAllSupplier():Observable<WishList>
+  GetAllWishlistProducts():Observable<WishList>
   {
-    return this.http.get<WishList>(`${this.Supplier_Url}/GetAllSuppliers`);
+    return this.http.get<WishList>(`${this.WishList_Url}/GetAllWishlistProducts`);
   }
-  AddSuppliers(product:WishList):Observable<WishList>
+  AddWishlistProduct(product:WishList):Observable<WishList>
   {
-    return this.http.post<WishList>(`${this.Supplier_Url}/AddSupplier`,product);
-  }
-
-  GetByIdSupplier(id:number):Observable<WishList>
-  {
-    return this.http.get<WishList>(`${this.Supplier_Url}/AddProduct ${id}`);
+    return this.http.post<WishList>(`${this.WishList_Url}/AddWishlistProduct`,product);
   }
 
-  DeleteSupplier(id:number):Observable<WishList>
+  GetByIdWishlistProduct(id:number):Observable<WishList>
   {
-    return this.http.delete<WishList>(`${this.Supplier_Url}/DeleteSupplier ${id}`);
+    return this.http.get<WishList>(`${this.WishList_Url}/AddProduct ${id}`);
   }
 
-  UpdateSupplier(Product:WishList):Observable<WishList>
+  DeleteWishlistProduct(id:number):Observable<WishList>
   {
-    return this.http.put<WishList>(`${this.Supplier_Url}/UpdateSupplier`,Product);
+    return this.http.delete<WishList>(`${this.WishList_Url}/DeleteWishlistProduct ${id}`);
+  }
+
+  UpdateWishlistProduct(Product:WishList):Observable<WishList>
+  {
+    return this.http.put<WishList>(`${this.WishList_Url}/UpdateWishlistProduct`,Product);
+  }
+  isProductInWishlist(productId: number):Observable<WishList>  {
+    return this.http.get<WishList>(`${this.WishList_Url}/AddProduct ${productId}`);
   }
 }

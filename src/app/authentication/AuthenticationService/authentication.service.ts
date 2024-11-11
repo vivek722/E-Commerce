@@ -5,12 +5,12 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { endpoints } from 'src/endpoint/endpoin';
 import { LoginData } from '../AuthenticationModel/LoginModel';
 import { RegisterModel } from '../AuthenticationModel/RegisterModel';
-
+import { jwtDecode } from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+ 
   Auth_Url = endpoints.AUTH;
   User_Url = endpoints.User;
   private userSubject: BehaviorSubject<LoginData | null> = new BehaviorSubject<LoginData | null>(null);
@@ -41,5 +41,22 @@ export class AuthenticationService {
     }
     Register(IUser:RegisterModel ):Observable<RegisterModel>{
       return this.http.post<RegisterModel>(`${this.User_Url}/AddUser`,IUser)
+    }
+    getUserRoleId(): string | null {
+      const token = localStorage.getItem('user');
+      if (token) {
+        const decodedToken = this.getDecodedAccessToken(token);
+        console.log(decodedToken.Role);
+        return decodedToken ? decodedToken.Role : null; // Replace `RoleId` with the actual key name in the token
+      }
+      return null;
+    }
+    getDecodedAccessToken(token: string): any {
+      try {
+        return jwtDecode(token);
+      } catch (Error) {
+        console.error("Token decoding error:", Error);
+        return null;
+      }
     }
 }

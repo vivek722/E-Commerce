@@ -69,9 +69,13 @@ export class AddProductComponent implements OnInit {
       if(res != null)
       {
         console.log("Data Insert SuccessFully");
-        
       }
     })
   }
   
+
+  CloseAddProductDailog() {
+    this.dialog.closeAll();
+    }
+    
 }

@@ -7,17 +7,12 @@
                     <input type="text" formControlName="UserName" placeholder="USERNAME">
                     <input type="text" formControlName="Email" placeholder="Email">
                     <input type="password" formControlName="PasswordHash" placeholder="PASSWORD">
-                    <!-- <select formControlName="RoleId">
-                      <option value="" disabled selected>Select Role</option>
-                      <option *ngFor="let Role of RoleData" [value]="Role.id">
-                        {{ Role.roleName }}
-                      </option>
-                    </select> -->
                     <input type="text" formControlName="Street" placeholder="Street">
                     <input type="text" formControlName="City" placeholder="City">
                     <input type="text" formControlName="State" placeholder="State">
                     <input type="text" formControlName="ZipCode" placeholder="ZipCode">
                     <button class="submit" type="button" (click)="RegisterUser()">Sign Up</button>
+                    <div class="top_link"><h4>Alredy Have Account <a [routerLink]="['/Login']">Sign In</a></h4></div>
                   </form>
                   
             </div>

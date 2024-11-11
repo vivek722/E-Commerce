@@ -11,9 +11,9 @@ export class ProductService {
   product_Url = endpoints.Product
   constructor(private http:HttpClient) { }
 
-  async AddProduct(product:Product):Promise<Observable<Product>>
+   AddProduct(product:Product):Observable<Product>
   {
-    return await this.http.post<Product>(`${this.product_Url}/AddProduct`,product);
+    return  this.http.post<Product>(`${this.product_Url}/AddProduct`,product);
   }
 
   GetAllProducts():Observable<Product>

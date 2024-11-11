@@ -16,9 +16,9 @@ export class SupllierService {
   {
     return this.http.get<Supplier>(`${this.Supplier_Url}/GetAllSuppliers`);
   }
-  AddSuppliers(product:Supplier):Observable<Supplier>
+  AddSuppliers(supllier:Supplier):Observable<Supplier>
   {
-    return this.http.post<Supplier>(`${this.Supplier_Url}/AddSupplier`,product);
+    return this.http.post<Supplier>(`${this.Supplier_Url}/AddSupplier`,supllier);
   }
 
   GetByIdSupplier(id:number):Observable<Supplier>

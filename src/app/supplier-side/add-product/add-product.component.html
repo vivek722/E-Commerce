@@ -5,7 +5,7 @@
             
             <div class="contact">
                 <form [formGroup]="productForm">
-                    <h3>Add Product</h3>
+                    <h1 class="Dialog-Title">Add Product</h1><h1 style="display: flex; justify-content: end;"><i class="bi bi-x" (click)="CloseAddProductDailog()"></i></h1>
                   
                     <input type="text" formControlName="ProductName" placeholder="Product Name">
                     <input type="text" formControlName="ProductDesc" placeholder="Product Description">
@@ -27,7 +27,10 @@
                       </option>
                     </select>
                   
-                    <button type="button" class="submit" (click)="AddProduct()">Add Product</button>
+                    <div class="button-container">
+                      <button class="submit" type="submit" (click)="AddProduct()">Add Product</button>
+                      <button class="submit" type="button" (click)="CloseAddProductDailog()">Close</button>
+                  </div>
                   </form>
             </div>
         </div>

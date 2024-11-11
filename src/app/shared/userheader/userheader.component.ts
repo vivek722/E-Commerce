@@ -10,7 +10,7 @@ export class UserheaderComponent implements OnInit  {
   
   constructor(private router:Router){}
   ngOnInit(): void {
-    this.router.navigate(['/test/home'])
+    this.router.navigate(['/User/homePage'])
   }
   Login() {
     this.router.navigate(['/Login'])

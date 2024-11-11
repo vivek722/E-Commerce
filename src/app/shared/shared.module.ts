@@ -19,7 +19,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     UserFooterComponent,
-    UserheaderComponent
+    UserheaderComponent,
+    SupplierSideBarComponent
   ]
 })
 export class SharedModule { }
