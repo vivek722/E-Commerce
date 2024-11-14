@@ -3,6 +3,7 @@ import { ProductService } from 'src/app/supplier-side/SupplierService/product.se
 import { AddToCartService } from '../ViewerSideService/add-to-cart.service';
 import { WishListService } from '../ViewerSideService/wish-list.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
@@ -13,54 +14,78 @@ export class ProductsComponent implements OnInit {
 
 
   products: any;
-  AddToCartproducts!:FormGroup ;
+  AddToCartproducts!: FormGroup;
   Wishlistproducts!: FormGroup;
-  @Input() Title : string | undefined;
-  constructor(private productService: ProductService,private AddTocartservice:AddToCartService,private WishlistService:WishListService,private Frombuilder:FormBuilder){}
+  WishListData: any[] = [];
+  userId = 3;
+  @Input() Title: string | undefined;
+WishData: any;
+
+  constructor(
+    private productService: ProductService,
+    private addToCartService: AddToCartService,
+    private wishlistService: WishListService,
+    private formBuilder: FormBuilder,
+    private tosterService: ToastrService 
+  ) {}
 
   ngOnInit(): void {
+    if(this.Title == "WishList Products")
+    {
+      this.wishlistService.GetAllWishlistProducts().subscribe((res: any) => {
+        this.products = res;
+        if (this.products) {
+          console.log("This is a list of all products:", this.products);
+        }
+      });
+    }
+    else if(this.Title == "Trending Products")
+    {
     this.productService.GetAllProducts().subscribe((res: any) => {
       this.products = res;
-      if(this.products)
-      {
-        console.log("this is list of all products");
-        
+      if (this.products) {
+        console.log("This is a list of all products:", this.products);
       }
-      console.log(this.products);;
+    });
+    }
+  }
+
+  AddToWishlist(ProductId: number) {
+    this.Wishlistproducts = this.formBuilder.group({
+      ProductId: [ProductId],
+      UserId: [this.userId]
+    });
+    this.wishlistService.isProductInWishlist(ProductId, this.userId).subscribe((res: any) => {
+      if (res) {
+        this.tosterService.warning("Product already added In Wishlist")
+      } else {
+        this.wishlistService.AddWishlistProduct(this.Wishlistproducts.value).subscribe((res: any) => {
+          if (res) {
+            this.WishListData.push(this.Wishlistproducts.value); 
+            this.tosterService.success("Product added successfully In Wishlist")
+          }
+        });
+      }
     });
   }
 
-    AddToWishlist(ProductId:number) {
-      this.Wishlistproducts = this.Frombuilder.group({
-        ProductId: [ProductId],
-        UserId: [3]
-      })
-      this.WishlistService.AddWishlistProduct(this.Wishlistproducts.value).subscribe((res:any)=>{
-        if(res.success)
-        {
-          alert("Product Added to wishlist");
-        }
-      })
-    }
-    AddToCart(ProductId:number) {
-      this.AddToCartproducts = this.Frombuilder.group({
-        ProductId: [ProductId],
-        UserId: [3],
-        Quantity: [1]
-      })
-      this.AddTocartservice.AddCartProduct(this.AddToCartproducts.value).subscribe((res:any)=>{
-        if(res.success)
-        {
-          alert("Product Added to AddToCart");
-        }
-      })
-    }
-    isInWishlist(productId: number): boolean {
-      var WishListData =this.WishlistService.isProductInWishlist(productId);
-      if(WishListData)
-      {
-        return true;
+  AddToCart(ProductId: number) {
+    this.AddToCartproducts = this.formBuilder.group({
+      ProductId: [ProductId],
+      UserId: [this.userId],
+      Quantity: [1]
+    });
+    this.addToCartService.isProductInCart(ProductId, this.userId).subscribe((res: any) => {
+      if (res) {
+        this.tosterService.warning("Product already added In Cart")
+      } else {
+        this.addToCartService.AddCartProduct(this.AddToCartproducts.value).subscribe((res: any) => {
+          if (res) {
+            this.WishListData.push(this.AddToCartproducts.value); 
+            this.tosterService.success("Product added successfully In Cart")
+          }
+        });
       }
-      return false;
-    }
+    });
+  }
 }

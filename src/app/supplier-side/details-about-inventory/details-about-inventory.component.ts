@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { AddInventoryComponent } from '../add-inventory/add-inventory.component';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-details-about-inventory',
   templateUrl: './details-about-inventory.component.html',
@@ -18,7 +19,7 @@ export class DetailsAboutInventoryComponent implements OnInit {
   dataSource:any;
 
 
-  constructor(private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog,private Inventoryservice:InventoryService){}
+  constructor(private _liveAnnouncer: LiveAnnouncer,public dialog: MatDialog,private Inventoryservice:InventoryService,private toastr: ToastrService){}
   @ViewChild(MatPaginator) paginatior!: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort;
 
@@ -52,5 +53,10 @@ displayInventoryData() {
        this.dataSource.sort = this.sort;
     })
   }
+
+
+  testToastr() {
+    this.toastr.success("Test message");
+    }
 
 }

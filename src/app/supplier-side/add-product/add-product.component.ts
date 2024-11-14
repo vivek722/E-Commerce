@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatDialog} from "@angular/material/dialog";
 import { SupllierService } from '../SupplierService/supllier.service';
 import { ProductService } from '../SupplierService/product.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-product',
@@ -13,7 +14,13 @@ export class AddProductComponent implements OnInit {
 
   supplierData:any
   productForm!: FormGroup;
-  constructor(private supplerservice:SupllierService, private fb:FormBuilder,private productService:ProductService ,public dialog: MatDialog){}
+  constructor(
+    private supplerservice:SupllierService,
+     private fb:FormBuilder,
+     private productService:ProductService ,
+     public dialog: MatDialog,
+     private toastr: ToastrService
+    ){}
     
     ngOnInit(): void {
       this.supplerservice.GetAllSupplier().subscribe((res:any)=>{
@@ -68,14 +75,11 @@ export class AddProductComponent implements OnInit {
       console.log(res);
       if(res != null)
       {
-        console.log("Data Insert SuccessFully");
+        this.toastr.success("Product added successfully");
       }
     })
   }
-  
-
   CloseAddProductDailog() {
     this.dialog.closeAll();
-    }
-    
+  }   
 }

@@ -9,7 +9,7 @@ import { SupplierSideRoutingModule } from './supplier-side/supplier-side-routing
 import { SharedModule } from './shared/shared.module';
 import {AuthenticationModule } from './authentication/authentication.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {ToastrModule} from 'ngx-toastr'
 
 @NgModule({
   declarations: [
@@ -21,7 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     ViewerSideRoutingModule,
     AuthenticationModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({ 
+      timeOut: 1000,
+      positionClass: 'toast-center-center',
+      preventDuplicates: true,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,7 +15,8 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+
 @NgModule({
   declarations: [
     AddInventoryComponent,
@@ -35,8 +36,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatDialogModule,  
-    SlickCarouselModule
+    MatDialogModule, 
+    
   ]
 })
 export class SupplierSideModule { }

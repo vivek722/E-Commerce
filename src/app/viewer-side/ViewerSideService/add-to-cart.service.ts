@@ -8,30 +8,34 @@ import { AddToCart } from '../ViewSideModel/AddToCart';
   providedIn: 'root'
 })
 export class AddToCartService {
-  Supplier_Url =endpoints.AddToCart
+  
+  AddToCart_URL =endpoints.AddToCart
   constructor(private http:HttpClient) { }
 
   GetAllCartProducts():Observable<AddToCart>
   {
-    return this.http.get<AddToCart>(`${this.Supplier_Url}/GetAllCartProducts`);
+    return this.http.get<AddToCart>(`${this.AddToCart_URL}/GetAllCartProducts`);
   }
   AddCartProduct(product:AddToCart):Observable<AddToCart>
   {
-    return this.http.post<AddToCart>(`${this.Supplier_Url}/AddCartProduct`,product);
+    return this.http.post<AddToCart>(`${this.AddToCart_URL}/AddCartProduct`,product);
   }
 
   GetByIdCartProduct(id:number):Observable<AddToCart>
   {
-    return this.http.get<AddToCart>(`${this.Supplier_Url}/AddProduct ${id}`);
+    return this.http.get<AddToCart>(`${this.AddToCart_URL}/AddProduct ${id}`);
   }
 
   DeleteProductInCart(id:number):Observable<AddToCart>
   {
-    return this.http.delete<AddToCart>(`${this.Supplier_Url}/DeleteProductInCart ${id}`);
+    return this.http.delete<AddToCart>(`${this.AddToCart_URL}/DeleteProductInCart ${id}`);
   }
 
   UpdateCartProduct(Product:AddToCart):Observable<AddToCart>
   {
-    return this.http.put<AddToCart>(`${this.Supplier_Url}/UpdateCartProduct`,Product);
+    return this.http.put<AddToCart>(`${this.AddToCart_URL}/UpdateCartProduct`,Product);
+  }
+  isProductInCart(ProductId: number, userId: number) {
+    return this.http.get<AddToCart>(`${this.AddToCart_URL}/isProductInCart?ProductId=${ProductId}&UserId=${userId}`);
   }
 }

@@ -36,7 +36,7 @@ export class WishListService {
   {
     return this.http.put<WishList>(`${this.WishList_Url}/UpdateWishlistProduct`,Product);
   }
-  isProductInWishlist(productId: number):Observable<WishList>  {
-    return this.http.get<WishList>(`${this.WishList_Url}/AddProduct ${productId}`);
+  isProductInWishlist(productId: number, UserId: number): Observable<WishList> {
+    return this.http.get<WishList>(`${this.WishList_Url}/isProductInWishlist?ProductId=${productId}&UserId=${UserId}`);
   }
 }

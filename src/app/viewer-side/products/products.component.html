@@ -14,7 +14,7 @@
             <div class="product-actions">
               <button class="action-btn" 
                       (click)="AddToWishlist(product.id)"
-                      [ngClass]="{'wishlist-active': isInWishlist(product.id)}">
+                      [ngClass]="{'wishlist-active':this.WishData}">
                 <i class="bi bi-heart"></i>
               </button>
               <button class="action-btn" (click)="AddToCart(product.id)">

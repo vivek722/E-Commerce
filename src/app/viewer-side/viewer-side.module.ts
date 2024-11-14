@@ -12,7 +12,10 @@ import { RouterModule } from '@angular/router';
 import { ViewerSideRoutingModule } from './viewer-side-routing.module';
 import { SupplierRegistrationComponent } from './supplier-registration/supplier-registration.component';
 import { ProductsComponent } from './products/products.component';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     UserHomeComponent,
@@ -21,7 +24,7 @@ import { ProductsComponent } from './products/products.component';
     UserAddToCartComponent,
     UserHomeDesignComponent,
     SupplierRegistrationComponent,
-    ProductsComponent
+    ProductsComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,11 @@ import { ProductsComponent } from './products/products.component';
     SharedModule,
     ReactiveFormsModule,
     RouterModule,
-    ViewerSideRoutingModule
+    ViewerSideRoutingModule,
+    MatDividerModule,
+    MatListModule,
+    MatButtonModule,
+    MatCardModule,
 ],
 exports:[
   UserHomeComponent
